@@ -4,7 +4,7 @@ MAINTAINER Kirill Morozov <kir.morozov@gmail.com>
 USER root
 RUN apt-get update && \
     apt-get upgrade --yes && \
-    apt-get install --yes mc git make cmake build-essential libboost-all-dev libstdc++6
+    apt-get install --yes mc git make cmake build-essential libboost-all-dev libstdc++6 ssh sshpass python-dev libmysqlclient-dev
 
 USER $NB_USER
 
@@ -25,18 +25,14 @@ RUN conda install --quiet --yes pip setuptools && \
 #
 #ENV ARTM_SHARED_LIBRARY /home/jovyan/bigartm/build/src/artm/libartm.so
 
-RUN conda install --quiet --yes gensim pandas-datareader && \
-    conda upgrade --quiet --yes --all && \
-    conda install --quiet --yes -n python2 gensim pandas-datareader&& \
-    conda upgrade --quiet --yes -n python2 --all
+RUN conda install --quiet --yes gensim pandas-datareader plotly  && \
+    conda install --quiet --yes -n python2 gensim pandas-datareader   plotly mysql-python
 
 RUN ln -sfn /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /opt/conda/envs/python2/lib/libstdc++.so && \
     ln -sfn /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /opt/conda/envs/python2/lib/libstdc++.so.6
 
-
-RUN pip install nbimporter jupyter_contrib_nbextensions && \
-    PATH=/opt/conda/envs/python2/bin:$PATH pip install nbimporter jupyter_contrib_nbextensions
-
-RUN pip install --pre statsmodels  && \
-    PATH=/opt/conda/envs/python2/bin:$PATH pip install --pre statsmodels
+RUN pip install nbimporter jupyter_contrib_nbextensions mysqlclient && \
+    pip install --pre -U statsmodels && \
+    PATH=/opt/conda/envs/python2/bin:$PATH pip install nbimporter jupyter_contrib_nbextensions && \
+    PATH=/opt/conda/envs/python2/bin:$PATH pip install --pre -U statsmodels
 
