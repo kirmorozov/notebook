@@ -1,4 +1,4 @@
-FROM jupyter/all-spark-notebook
+FROM jupyter/datascience-notebook
 MAINTAINER Kirill Morozov <kir.morozov@gmail.com>
 
 USER root
