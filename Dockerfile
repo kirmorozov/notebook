@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook
+FROM jupyter/datascience-notebook:latest
 MAINTAINER Kirill Morozov <kir.morozov@gmail.com>
 
 USER root
