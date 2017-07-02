@@ -1,4 +1,4 @@
-FROM jupyter/tensorflow-notebook:latest
+FROM jupyter/scipy-notebook:latest
 MAINTAINER Kirill Morozov <kir.morozov@gmail.com>
 
 USER root
