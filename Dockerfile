@@ -4,7 +4,7 @@ MAINTAINER Kirill Morozov <kir.morozov@gmail.com>
 USER root
 RUN apt-get update && \
     apt-get upgrade --yes && \
-    apt-get install --yes mc git make cmake build-essential libboost-all-dev libstdc++6 ssh sshpass python-dev libmysqlclient-dev
+    apt-get install --yes mc git make cmake build-essential libboost-all-dev libstdc++6 ssh-client ssh sshpass python-dev libmysqlclient-dev
 
 USER $NB_USER
 
