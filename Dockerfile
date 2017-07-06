@@ -25,8 +25,8 @@ RUN conda install --quiet --yes pip setuptools && \
 #
 #ENV ARTM_SHARED_LIBRARY /home/jovyan/bigartm/build/src/artm/libartm.so
 
-RUN conda install --quiet --yes gensim pandas-datareader plotly  && \
-    conda install --quiet --yes -n python2 gensim pandas-datareader   plotly mysql-python
+RUN conda install --quiet --yes gensim pandas-datareader plotly cufflinks  && \
+    conda install --quiet --yes -n python2 gensim pandas-datareader plotly cufflinks mysql-python
 
 RUN ln -sfn /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /opt/conda/envs/python2/lib/libstdc++.so && \
     ln -sfn /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /opt/conda/envs/python2/lib/libstdc++.so.6
